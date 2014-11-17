@@ -1,0 +1,309 @@
+﻿<html ng-app="ionicApp">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link href="css/ionic.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+        <ion-nav-back-button class="button-icon ion-arrow-left-c"></ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+
+    <script type="text/ng-template" id="templates/tabs.html">
+        <ion-tabs class="tabs-icon-top tabs-positive">
+
+            <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+                <ion-nav-view name="home-tab"></ion-nav-view>
+            </ion-tab>
+            
+            <ion-tab title="Adoção" icon="ion-plus-circled" ui-sref="tabs.cadAdocao">
+                <ion-nav-view name="cadAdocao-tab"></ion-nav-view>
+            </ion-tab>
+
+            <ion-tab title="Perdidos" icon="ion-plus-circled" href="#/tab/lost">
+                <ion-nav-view name="lost-tab"></ion-nav-view>
+            </ion-tab>
+
+            <ion-tab title="Sobre" icon="ion-ios7-information" href="#/tab/about">
+                <ion-nav-view name="about-tab"></ion-nav-view>
+            </ion-tab>
+
+        </ion-tabs>
+    </script>
+
+    <script type="text/ng-template" id="templates/home.html">
+        <ion-view title="AppName">
+            <ion-content padding="true">
+
+                <div class="list" ng-controller="InstantSearchController">
+
+                    <!--Crie uma ligação entre o modelo searchString e o campo de texto-->
+                    <div class="bar bar-header item-input-inset">
+                        <label class="item-input-wrapper">
+                            <i class="icon ion-ios7-search placeholder-icon"></i>
+                            <input type="search" ng-model="searchString" placeholder="Digite o termo para pesquisa">
+                        </label>
+                        <button class="button button-clear">
+                            Cancel
+                        </button>
+                    </div>
+
+                  <p></p>
+                   <p><h4>Adote um amigo</h4></p>
+                    <a class="item item-thumbnail-left" href="#/tab/homePage1" ng-repeat="i in items | searchFor:searchString">
+                        <img ng-src="{{ i.anm_photo }}">
+                        <h2>{{ i.anm_name }}</h2>
+                        <p>{{ i.anm_obs }}</p>
+                    </a>
+                    
+                </div>
+                
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/homePage1.html">
+        <ion-view title="Responsável pelo animal">
+            <ion-content class="padding">
+
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        Adoação de animais é um ato responsável e não deve ser feita apenas pela emoção.
+                    </div>
+                </div>
+               
+
+                <div class="list">
+
+                    <label class="item item-input">
+                        <input type="text" placeholder="Nome" disabled>
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Email" disabled>
+                    </label>
+
+                    <label class="item item-input">
+                        <input type="text" placeholder="Telefone" disabled>
+                    </label>
+
+                    <label class="item item-input">
+                        <textarea placeholder="Endereço" disabled></textarea>
+                    </label>
+
+                </div>
+                
+                <p>
+                    <a class="button icon ion-home" href="#/tab/home"></a>
+                </p>
+
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/cadAdocao.html">
+        <ion-view title="Cadastro de doação">
+           
+            <ion-content class="padding">
+                <p><h4>Dados do responsável</h4></p>
+
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Nome</span>
+                        <input type="text" placeholder="Nome">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Email</span>
+                        <input type="text" placeholder="Email">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Telefone</span>
+                        <input type="text" placeholder="Telefone">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Endereço</span>
+                        <textarea placeholder="Endereço"></textarea>
+                    </label>
+
+                </div>
+
+                <p>
+                    <!--<a class="button icon ion-camera" href=""></a>-->
+                    <a class="button icon icon-right" href="#/tab/facts2">>></a>
+                </p>
+
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/more_lost.html">
+        <ion-view title="Contatos do responsável">
+            <ion-content class="padding">
+
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        Recompensa - R$ 0,10
+                    </div>
+                </div>
+
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Responsável</span>
+                        <input type="text" placeholder="Responsável">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Email</span>
+                        <input type="text" placeholder="Email">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Telefone</span>
+                        <input type="text" placeholder="Telefone">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Localidade/Endereço</span>
+                        <input type="text" placeholder="Localidade">
+                    </label>
+
+                </div>
+
+
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/facts2.html">
+        <ion-view title="Cadastro de doação">
+            <ion-content class="padding">
+               
+                <p><h4>Dados do animal</h4></p>
+
+                <div class="list">
+
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Nome</span>
+                        <input type="text" placeholder="Nome">
+                    </label>
+
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Tempo de vida</span>
+                        <input type="text" placeholder="Tempo de vida">
+                    </label>
+
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Raça</span>
+                        <input type="text" placeholder="Raça">
+                    </label>
+
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Comentário</span>
+                        <textarea placeholder="Comentário"></textarea>
+                    </label>
+
+                </div>
+                <p>
+                    <a class="button icon ion-camera" href=""></a>
+                    <!--<a class="button icon ion-home" href="#/tab/home"> Home</a>-->
+                    <!--<a class="button icon ion-chevron-left" href="#/tab/facts"> Scientific Facts</a>-->
+                </p>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/about.html">
+        <ion-view title="About">
+            <ion-content class="padding">
+                <h4>appName</h4>
+                <p>O aplicativo destina-se a aproximar pessoas que possam ajudar e animais a procura de um lar.</p>
+                <p>
+                    Desenvolvedores:
+                </p>
+                <p>
+                    alanrbentes@gmail.com;
+                </p>
+                <p>
+                    jojyanne@gmail.com
+                </p>
+               
+                 <!--<p>
+                    <a class="button icon icon-right ion-chevron-right" href="#/tab/navstack">Tabs Nav Stack</a>
+                </p>-->
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <!--<script type="text/ng-template" id="templates/lost.html">
+        <ion-view title="Ajude a encontrar">
+            <ion-content class="padding">
+                <h3>Create hybrid mobile apps with the web technologies you love.</h3>
+                <p>Free and open source, Ionic offers a library of mobile-optimized HTML, CSS and JS components for building highly interactive apps.</p>
+                <p>Built with Sass and optimized for AngularJS.</p>
+                <p>
+                    <a class="button icon icon-right ion-chevron-right" href="#/tab/navstack">Tabs Nav Stack</a>
+                </p>
+            </ion-content>
+        </ion-view>
+    </script>-->
+
+    <script type="text/ng-template" id="templates/lost.html">
+        <ion-view title="AppName">
+            <ion-content padding="true">
+
+                <div class="list" ng-controller="InstantSearchController">
+
+                    <!--Crie uma ligação entre o modelo searchString e o campo de texto-->
+                    <div class="bar bar-header item-input-inset">
+                        <label class="item-input-wrapper">
+                            <i class="icon ion-ios7-search placeholder-icon"></i>
+                            <input type="search" ng-model="searchString" placeholder="Digite o termo para pesquisa">
+                        </label>
+                        <button class="button button-clear">
+                            Cancel
+                        </button>
+                    </div>
+
+                    <p></p>
+                    <p><h4>Animais perdidos</h4></p>
+                    <a class="item item-thumbnail-left" href="#/tab/more_lost" ng-repeat="i in items | searchFor:searchString">
+                        <img ng-src="{{ i.anm_photo }}">
+                        <h2>{{ i.anm_name }}</h2>
+                        <p>{{ i.anm_obs }}</p>
+                    </a>
+
+                </div>
+
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/nav-stack.html">
+        <ion-view title="Tab Nav Stack">
+            <ion-content class="padding">
+                <p><img src="http://ionicframework.com/img/diagrams/tabs-nav-stack.png" style="width:100%"></p>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/contact.html">
+        <ion-view title="Contact">
+            <ion-content>
+                <div class="list">
+                    <div class="item">
+                        @IonicFramework
+                    </div>
+                    <div class="item">
+                        @DriftyTeam
+                    </div>
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+
+    <script src="js/ionic.bundle.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
